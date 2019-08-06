@@ -13,10 +13,12 @@ body {
 input[type="button"] {
     font-family: "Star Jedi", "Arial", sans-serif;    
     background-color: #FFE81F;
-    padding: 5px;
     border: 2px solid #222;
     font-size: 1.25em;
     cursor: pointer;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 75px;
 }
 input[type="button"]:hover {
     background-color: #222;
@@ -26,16 +28,19 @@ input[type="button"]:hover {
 h1 {
     font-size: 1.5em;
     text-align: center;
+    margin-bottom: 15px;
 }
 h2 {
     margin-bottom: 5px;
+}
+#characters {
+    text-align: center;
 }
 .character {
     position: relative;
     display: inline-block;
     padding: 5px;
     margin: 5px;
-    cursor: pointer;
 }
 .character .name {
     position: absolute;
@@ -51,10 +56,10 @@ h2 {
     right: 5px;
     color: #f6f6f6;
 }
-#characters .character, #characters .character .name {
+#attacker .character, #attacker .character .name {
     background-color: #23D160;
 }
-#enemies .character, #enemies .character .name {
+#characters .character, #characters .character .name {
     background-color: #333333;
 }
 #defender .character, #defender .character .name {
@@ -66,7 +71,20 @@ h2 {
 h1, h2 {
     color: #FFE81F;
 }
-#container .character:not([disabled]):hover .name, #container .character:not([disabled]):hover {
+#characters .character:not([disabled]) {
+    cursor: pointer;
+}
+#characters .character:not([disabled]):hover .name, #characters .character:not([disabled]):hover {
     background-color: #FFE81F;
     color: #333;
+}
+#game {
+    display: none;
+}
+#game > div {
+    flex-grow: 1;
+    text-align: center;
+}
+#info {
+    text-align: center;
 }

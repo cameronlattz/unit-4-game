@@ -1,59 +1,50 @@
 const starWars = function() {
     let defenderDiv;
-    let enemiesDiv;
-    let attackDiv;
-    let character = -1;
-    let defender = -1;
+    let attackerDiv;
+    let infoDiv;
+    let attackerIndex = -1;
+    let defenderIndex = -1;
     let characterElements = [];
+
     const getCharacterName = function(index) {
-        if (index === void 0) {
-            index = defender;
-        }
         const character = characterElements[index];
         return character.querySelector(".name").textContent;
+    }
+    const getCharacterHealth = function(index) {
+        const character = characterElements[index];
+        var health = character.querySelector(".health").textContent;
+        return parseInt(health);
     }
     const getRandomInt = function(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-    const clickCharacter = function(characterElement) {
-
+    const clickAttack = function() {
+        var damageOut = getRandomInt(0, 25);
+        infoDiv.innerHTML = "You attacked " + getCharacterName(defenderIndex) + " for " + damageOut + " damage!<br>";
+        character[defenderIndex].querySelector(".health").textContent = getCharacterHealth(defenderIndex) - damageOut;
+        var damageIn = getRandomInt(0, 25);
+        infoDiv.innerHTML += getCharacterName(defenderIndex) + " attacked you for " + damageIn + " damage!";
     }
-    const findParent = function(element, id) {
-        if (element.parentNode.id === id) {
-            return element.parentNode;
-        } else {
-            findParent(element.parentNode, id);
+    const clickCharacter = function(index) {
+        if (attackerIndex === -1) {
+            attackerDiv.append(characterElements[index]);
+            attackerIndex = index;
+            document.getElementById("characterType").innerHTML = "enemy";
+        } else if (defenderIndex === -1) {
+            defenderDiv.append(characterElements[index]);
+            defenderIndex = index;
+            document.getElementById("characters").style.display = "none";
+            document.getElementById("game").style.display = "flex";
         }
     }
     window.onload = function() {
-        enemiesDiv = document.getElementById("enemies");
         defenderDiv = document.getElementById("defender");
-        attackDiv = document.getElementById("attack");
+        attackerDiv = document.getElementById("attacker");
+        infoDiv = document.getElementById("info");
         characterElements = document.getElementsByClassName("character");
         for (let i = 0; i < characterElements.length; i++) {
-            characterElements[i].addEventListener("click", function() {
-                this.setAttribute("disabled", "disabled");
-                if (character === -1) {
-                    character = i;
-                } else {
-                    defenderDiv.append(this);
-                    defender = i;
-                    enemiesDiv.querySelectorAll(".character").forEach(function(enemyCharacter) {
-                        enemyCharacter.setAttribute("disabled", "disabled");
-                    });
-                }
-                for (let j = 0; j < characterElements.length; j++) {
-                    if (characterElements[j] !== this) {
-                        enemiesDiv.append(characterElements[j]);
-                    }
-                }
-            });
+            characterElements[i].addEventListener("click", function() {clickCharacter(i)});
         }
-        document.getElementById("attackButton").addEventListener("click", function() {
-            var damageOut = getRandomInt(0, 25);
-            attackDiv.innerHTML = "You attacked " + getCharacterName() + " for " + damageOut + " damage!<br>";
-            var damageIn = getRandomInt(0, 25);
-            attackDiv.innerHTML += getCharacterName() + " attacked you for " + damageIn + " damage!";
-        });
+        document.getElementById("attackButton").addEventListener("click", clickAttack);
     };
 }();

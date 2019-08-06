@@ -11,8 +11,8 @@
 <body>
     <div id="container">
         <h1>Star Wars RPG!</h1>
-        <h2>Your Character</h2>
-        <div id="characters" class="main">
+        <div id="characters">
+            <h2>Pick your <span id="characterType">character</span>:</h2>
             <span class="character">
                 <img src="assets/images/luke.jpeg" width=250>
                 <span class="name">Luke Skywalker</span>
@@ -34,15 +34,18 @@
                 <span class="health">100</span>
             </span>
         </div>
-        <h2>Enemies available to attack</h2>
-        <div id="enemies" class="main"></div>
-        <h2>Fight section</h2>
-        <div id="fight" class="main">
-            <input type="button" value="Attack!" id="attackButton">
+        <div id="game">
+            <div id="attacker">
+                <h2>Attacker</h2>
+            </div>
+            <div id="fight">
+                <input type="button" value="Attack!" id="attackButton">
+            </div>
+            <div id="defender">
+                <h2>Defender</h2>
+            </div>
         </div>
-        <h2>Defender</h2>
-        <div id="defender" class="main"></div>
-        <div id="attack" class="main"></div>
+        <div id="info"></div>
     </div>
 </body>
 </html>
