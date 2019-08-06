@@ -5,10 +5,68 @@
 
 body {
     background: url("../images/bg.jpg") fixed top left;
-    color: #f6f6f6;
     font-family: "Star Jedi", "Arial", sans-serif;
+    font-size: 1.5em;
+    margin: 5px;
+    color: #f6f6f6;
+}
+input[type="button"] {
+    font-family: "Star Jedi", "Arial", sans-serif;    
+    background-color: #FFE81F;
+    padding: 5px;
+    border: 2px solid #222;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+input[type="button"]:hover {
+    background-color: #222;
+    border: 2px solid #f6f6f6;
+    color: #f6f6f6;
 }
 h1 {
     font-size: 1.5em;
     text-align: center;
+}
+h2 {
+    margin-bottom: 5px;
+}
+.character {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+.character .name {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    font-size: 0.75em;
+    color: #f6f6f6;
+    padding-right: 3px;
+}
+.character .health {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    color: #f6f6f6;
+}
+#characters .character, #characters .character .name {
+    background-color: #23D160;
+}
+#enemies .character, #enemies .character .name {
+    background-color: #333333;
+}
+#defender .character, #defender .character .name {
+    background-color: #FF3860;
+}
+.main {
+    margin-bottom: 25px;
+}
+h1, h2 {
+    color: #FFE81F;
+}
+#container .character:not([disabled]):hover .name, #container .character:not([disabled]):hover {
+    background-color: #FFE81F;
+    color: #333;
 }
