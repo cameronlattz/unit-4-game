@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Star Jedi";
+    src: url("../fonts/Starjedi.ttf");
+}
+
+body {
+    background: url("../images/bg.jpg") fixed top left;
+    color: #f6f6f6;
+    font-family: "Star Jedi", "Arial", sans-serif;
+}
+h1 {
+    font-size: 1.5em;
+    text-align: center;
+}
