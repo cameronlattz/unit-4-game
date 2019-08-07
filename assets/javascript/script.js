@@ -12,7 +12,7 @@ const starWars = function() {
     let gameOver = false;
     let roundOver = false;
 
-    const animateValue = function(obj, start, end, duration, callback) {
+    const animateValue = function(obj, start, end, duration) {
         const range = end - start;
         let current = start;
         const increment = end > start? 1 : -1;
@@ -21,7 +21,6 @@ const starWars = function() {
             current += increment;
             obj.innerHTML = current;
             if (current == end) {
-                callback();
                 clearInterval(timer);
             }
         }, stepTime);
@@ -102,12 +101,11 @@ const starWars = function() {
         }
         if (damage > 0) {
             var healthSpan = character.querySelector(".health");
-            animateValue(healthSpan, health, health - damage, 1000, function() {
-                setTimeout(function() {
-                    document.getElementById("attackButton").style.visibility = "visible";
-                }, 500);
-            });
+            animateValue(healthSpan, health, health - damage, 1000);
         }
+        setTimeout(function() {
+            document.getElementById("attackButton").style.visibility = "visible";
+        }, 1500);
         return damage;
     }
     return {
